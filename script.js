@@ -1,7 +1,9 @@
 const display=document.querySelector(".calculator-input");
 const keys=document.querySelector(".calculator-buttons");
+console.log(keys);
 
 let displayValue="0";
+
 let firstValue= null;
 let operator= null;
 let secondValue=false;

@@ -9,7 +9,7 @@ h1{
 
 .container{
     text-align: center;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -18,7 +18,7 @@ h1{
     gap: 10px;
     font-size: 4rem;
     width: 500px;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .calculator-display input{
