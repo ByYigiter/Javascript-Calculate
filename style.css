@@ -22,7 +22,7 @@ h1{
 }
 
 .calculator-display input{
-    height: 100px;
+    height: 200px;
     width: 450px;
     text-align: right;
     border-radius: 15px 15px 0 0;
