@@ -1,118 +1,59 @@
-const display=document.querySelector(".calculator-input");
-const keys=document.querySelector(".calculator-buttons");
-console.log(keys);
-
-let displayValue="0";
-
-let firstValue= null;
-let operator= null;
-let secondValue=false;
-
-updateDisplay();
-
-function updateDisplay(){
-    display.value=displayValue;
+let inputScreen = document.querySelector(".calculator-input");
+function tekIslem(val){
+    //console.log(val)
+    inputScreen.value=val;
+}
+function cokluIslem(val){
+    inputScreen.value+=val;
+}
+function hesapla() {
+    tekIslem(eval(inputScreen.value))
+}
+function karekok(){
+   tekIslem(Math.sqrt(inputScreen.value));
 }
 
+  function removeFirstLast(){ 
+    // let filter= inputScreen.value; 
+    // filter= filter.substring(0, filter.length - 1);
+    // tekIslem(inputScreen.value=filter); 
+    let currentValue = inputScreen.value;
+  inputScreen.value = currentValue.slice(0, -1);
+  tekIslem(inputScreen.value); 
+}
 
- keys.addEventListener("click",function(e){
+function yuzdeAl() {
+    // let currentValue = inputScreen.value;
+    // let yuzdeDegeri = parseFloat(currentValue) / 100;
+    // inputScreen.value = yuzdeDegeri.toString();
+
+
+    let currentValue = inputScreen.value;
+    let operator = currentValue.match(/[+\-*/%]/)[0];
+    let numbers = currentValue.split(/[+\-*/%]/);
+    let number1 = parseFloat(numbers[0]);
+    let number2 = parseFloat(numbers[1]);
+    let percentage = parseFloat(currentValue.split(" ")[2]) / 100;
   
-    const input=e.target;
-   //console.log(input)
-    if(!input.matches('button')) return;
-
-    //console.log(input)
-
-    if(input.classList.contains('operator')){
-       // console.log("operator pressed");
-        inputOperator(input.value);
-        updateDisplay();
-        
-        return;
+    switch (operator) {
+      case "+":
+        inputScreen.value = number1 + number2;
+        break;
+      case "-":
+        inputScreen.value = number1 - number2;
+        break;
+      case "*":
+        inputScreen.value = number1 * number2;
+        break;
+      case "/":
+        inputScreen.value = number1 / number2;
+        break;
+      case "%":
+        inputScreen.value = number1 * percentage;
+        break;
+      default:
+        inputScreen.value = "Invalid operator";
     }
-    if(input.classList.contains('decimal')){
-       // console.log("decimal pressed");
-        inputDecimal(input.value)
-        updateDisplay();
-        return;
-    }
-    
-    
-   // console.log(input)
-
-   inputNumber(input.value);
-   updateDisplay();
   
-});
-
-function inputNumber(num){
-    if(secondValue){
-        displayValue=num;
-        secondValue=false;
-    }
-    else{
-        displayValue=displayValue==='0'? num: displayValue+num;        
-    }
-    console.log(displayValue, firstValue, operator,secondValue)
-
-  
-}
-
-function inputDecimal(){
-    if(!displayValue.includes('.')){
-        displayValue +='.';
-}
-    }
-
-    function inputOperator(nextOperator){
-        const value=parseFloat(displayValue);
-// //         console.log(nextOperator)
-
-        if(operator&& secondValue){
-            operator=nextOperator;
-            return
-        }
-        if(firstValue===null){
-            firstValue=value;
-        }
-        else if(operator){
-            const result= calculate(firstValue , value , operator)
-            displayValue =`${parseFloat(result.toFixed(5))}`
-            firstValue=result;
-        }
-        secondValue=true;
-        operator=nextOperator;
-        console.log(displayValue, firstValue, operator,secondValue)
-
-}
-function calculate(first, second ,operator){
-
-    if(operator==='+'){
-        return first+second;
-    }else if(operator==='-'){
-        return first-second;
-    }
-    else if(operator==='*'){
-        return first* second
-    }
-    else if(operator==='/'){
-        return first/second;
-    }
-
-    return second;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
 
