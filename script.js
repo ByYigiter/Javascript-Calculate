@@ -30,9 +30,7 @@ function yuzdeAl() {
   let arr = bol.split(/[-+/*]/)
   let sayi1=arr[0]
   let sayi2=arr[1]
-  //alert(arr[0])
-  //alert(arr[1])
-  
+
   let yuzde;
 
   switch(sembol){
@@ -50,7 +48,6 @@ function yuzdeAl() {
     break
   }
   let  yuzdenew=`${yuzde}`;
-  //alert (yuzdenew)
 
   tekIslem(yuzdenew)
 
