@@ -23,37 +23,42 @@ function karekok(){
 }
 
 function yuzdeAl() {
-    // let currentValue = inputScreen.value;
-    // let yuzdeDegeri = parseFloat(currentValue) / 100;
-    // inputScreen.value = yuzdeDegeri.toString();
-
-
-    let currentValue = inputScreen.value;
-    let operator = currentValue.match(/[+\-*/%]/)[0];
-    let numbers = currentValue.split(/[+\-*/%]/);
-    let number1 = parseFloat(numbers[0]);
-    let number2 = parseFloat(numbers[1]);
-    let percentage = parseFloat(currentValue.split(" ")[2]) / 100;
+  let bol =inputScreen.value;
+  console.log( bol)
+  let sembol =inputScreen.value.replace(/[0-9]/gi,'')  
+  console.log( sembol)
+  let arr = bol.split(/[-+/*]/)
+  let sayi1=arr[0]
+  let sayi2=arr[1]
+  //alert(arr[0])
+  //alert(arr[1])
   
-    switch (operator) {
-      case "+":
-        inputScreen.value = number1 + number2;
-        break;
-      case "-":
-        inputScreen.value = number1 - number2;
-        break;
-      case "*":
-        inputScreen.value = number1 * number2;
-        break;
-      case "/":
-        inputScreen.value = number1 / number2;
-        break;
-      case "%":
-        inputScreen.value = number1 * percentage;
-        break;
-      default:
-        inputScreen.value = "Invalid operator";
-    }
-  
+  let yuzde;
+
+  switch(sembol){
+    case  '+' :
+       yuzde =Number(sayi1) + Number(sayi1*sayi2/100);
+      break;
+      case  '-' :
+         yuzde =Number(sayi1) - Number(sayi1*sayi2/100);
+    break
+    case  '*' :
+         yuzde =Number(sayi1) * Number(sayi2/100);
+    break
+    case  '/' :
+         yuzde =Number(sayi1) * Number(100/sayi2);
+    break
   }
+  let  yuzdenew=`${yuzde}`;
+  //alert (yuzdenew)
+
+  tekIslem(yuzdenew)
+
+  
+  
+}
+
+
+
+
 
